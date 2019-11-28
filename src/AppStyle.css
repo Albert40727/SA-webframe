@@ -1,0 +1,53 @@
+.title {
+    background-color: 	#1E90FF;
+    color:white;
+    font-family:微軟正黑體;
+}
+.topic {
+    background-color:#cccccc;
+    color:white;
+    text-align: center;
+}
+.menu{
+    height: 100vh;
+    width: 20vw;
+    color: white;
+    background-color:#1E90FF;
+    float: left;
+    font-family:微軟正黑體;
+}
+.content{
+    padding-left: 22vw;
+    padding-top:5vw;
+    height:100vh;
+    width:100vw;
+    background-color:white;
+    font-family:微軟正黑體;
+}
+.menu ul li {
+    list-style-type: none;
+    font-size: 1.3em;
+    text-align: center;
+    padding: 15px 30px;
+    color: #ffffff;
+    transition: 0.5s;
+}
+.item{
+    transition: 0.5s;
+}
+.item:hover{
+    background-color: #b3b3b3;
+    color:#ffd633;
+}
+.menu h1 h3 {
+    text-align: left;
+}
+.menu ul li:hover {
+    background-color: #ffd633;
+    color: #4a4a4a;
+}
+hr {
+    display: white;
+    border-width: 5px;
+  }
+
