@@ -25,7 +25,7 @@ export default function WorkStateFrame(){
                     <center>
                     <b> 
                         <h1 className="mt-3" style={{
-                            "color":"yellow"}}>&lt;&lt;NCU&gt;&gt;<br></br></h1>
+                            "color":"yellow"}}>&lt;&lt;NCUe&gt;&gt;<br></br></h1>
                         <h1>工時管理系統</h1>
                         <h3>計時人員</h3>
                     </b>
