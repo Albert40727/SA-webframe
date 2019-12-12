@@ -2,7 +2,6 @@ import React from 'react';
 import LoginFrame from './LoginFrame';
 import ModifyFrame from './ModifyFrame';
 import WorkStateFrame from './WorkStateFrame';
-import Test from './test';
 
 function App() {
   return (
@@ -11,5 +10,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
