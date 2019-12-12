@@ -18,12 +18,11 @@ function ModifyFrame(){
             <div className="title">
                 <h1>-NCU-<br></br>工時管理系統</h1>
                 <h3 >計時人員</h3>  
-            
             <Container className="topic" style={{
                     "maxWidth": "100vw",
             }}>
                 <Row>
-                    <Col className="item"><b><label onClick = {event1} >個人資訊</label></b></Col>
+                    <Col className="item" ><b><label onClick = {event1} >個人資訊</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >我的時段</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >檢視我的班表</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >薪資紀錄</label></b></Col>

@@ -14,7 +14,7 @@ function LoginFrame()
     return(     
         <div style={{"fontFamily":"微軟正黑體"}}>
             <div className="title">
-                <h1>NCU<br></br>工時管理系統</h1>
+                <h1>-NCU-<br></br>工時管理系統</h1>
                 <h3>輸入您的帳號密碼以進行登入</h3>  
             </div>
             <div>  
