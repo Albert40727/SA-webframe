@@ -15,7 +15,8 @@ import {
     Switch,
     Route,
     Link,
-    NavLink
+    NavLink,
+    useRouteMatch
 }from 'react-router-dom';
 export default function WorkStateFrame(){
     return(
@@ -25,35 +26,63 @@ export default function WorkStateFrame(){
                     <center>
                     <b> 
                         <h1 className="mt-3" style={{
-                            "color":"yellow"}}>&lt;&lt;NCUe&gt;&gt;<br></br></h1>
+                            "color":"yellow"}}>&lt;&lt;NCU&gt;&gt;<br></br></h1>
                         <h1>工時管理系統</h1>
                         <h3>計時人員</h3>
                     </b>
                     </center>
                     <hr></hr>
                     <ul>
-                        <li><NavLink activeStyle={{color:"white"}} to="/WorInfo"><b>員工資訊</b></NavLink></li>
-                        <li><NavLink activeStyle={{color:"white"}} to="/choosenSchedule"><b>我的時段</b></NavLink></li>
-                        <li><NavLink activeStyle={{color:"white"}} to="/Schedule"><b>選擇班表</b></NavLink></li>
-                        <li><NavLink activeStyle={{color:"white"}} to="/Salary"><b>薪資紀錄</b></NavLink></li>
+                        <li><MenuLink 
+                            to="/worInfo"
+                            activeOnlyWhenExact={true}
+                            label="員工資訊"></MenuLink></li>
+                        <li><MenuLink 
+                            to="/choosenSchedule"
+                            label="我的時段"></MenuLink></li>
+                        <li><MenuLink 
+                            to="/schedule"
+                            label="選擇班表"></MenuLink></li>
+                        <li><MenuLink 
+                            to="/salary"
+                            label="薪資紀錄"></MenuLink></li>
                     </ul>
                 </div>
             </div>
             <Switch>
-                <Route exact path="/WorInfo">
+                <Route exact path="/worInfo">
                     <WorkerInfo/>
                 </Route>
                 <Route path="/choosenSchedule">
                     <ChoosenSchedule/>
                 </Route>
-                <Route path="/Schedule">
+                <Route path="/schedule">
                     <Schedule/>
                 </Route>
-                <Route path="/Salary">
+                <Route path="/salary">
                     <Salary/>
                 </Route>
             </Switch>
         </Router>
+    );
+}
+
+function MenuLink ({activeOnlyWhenExact,to,label})
+{
+    let match = useRouteMatch ({
+        exact:activeOnlyWhenExact,
+        path:to
+    })
+    return(
+        <div>
+            <Link to={to} style={
+                {color:"white",
+                textDecoration:"none",
+                fontFamily:"微軟正黑體",
+                fontWeight:"Bold"}}>
+                    {label}
+            </Link>
+        </div>
     );
 }
 
