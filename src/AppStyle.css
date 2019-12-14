@@ -47,5 +47,11 @@
 hr {
     display: white;
     border-width: 5px;
-  }
+}
+.linkStyle {
+    color:"white";
+    text-decoration:"none";
+    font-family:"微軟正黑體";
+    font-Weight:"Bold";
+}
 

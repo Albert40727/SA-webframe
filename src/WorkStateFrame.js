@@ -8,6 +8,7 @@ import {
     Col,
     InputGroup,
     FormControl,
+    Form,
     FormCheck
 } from 'react-bootstrap';
 import {
@@ -34,15 +35,16 @@ export default function WorkStateFrame(){
                     <hr></hr>
                     <ul>
                         <li><MenuLink 
-                            to="/worInfo"
+                            to="/"
                             activeOnlyWhenExact={true}
                             label="員工資訊"></MenuLink></li>
                         <li><MenuLink 
+                            to="/schedule"
+                            label="選擇班表"></MenuLink>
+                        </li>
+                        <li><MenuLink 
                             to="/choosenSchedule"
                             label="我的時段"></MenuLink></li>
-                        <li><MenuLink 
-                            to="/schedule"
-                            label="選擇班表"></MenuLink></li>
                         <li><MenuLink 
                             to="/salary"
                             label="薪資紀錄"></MenuLink></li>
@@ -50,7 +52,7 @@ export default function WorkStateFrame(){
                 </div>
             </div>
             <Switch>
-                <Route exact path="/worInfo">
+                <Route exact path="/">
                     <WorkerInfo/>
                 </Route>
                 <Route path="/choosenSchedule">
@@ -62,13 +64,15 @@ export default function WorkStateFrame(){
                 <Route path="/salary">
                     <Salary/>
                 </Route>
+                <Route path="/addworker">
+                    <AddWorker/>
+                </Route>
             </Switch>
         </Router>
     );
 }
 
-function MenuLink ({activeOnlyWhenExact,to,label})
-{
+function MenuLink ({activeOnlyWhenExact,to,label}){
     let match = useRouteMatch ({
         exact:activeOnlyWhenExact,
         path:to
@@ -86,8 +90,7 @@ function MenuLink ({activeOnlyWhenExact,to,label})
     );
 }
 
-function WorkerInfo()
-{
+function WorkerInfo(){
     return(
         <div className="content">
             <h1><b>員工資訊</b></h1>
@@ -105,29 +108,34 @@ function WorkerInfo()
                             <td>1</td>
                             <td>Albert</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="danger">離職</Button></td>
+                            <td><Button variant="outline-danger">離職</Button></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Eric</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="success">在職</Button></td>
+                            <td><Button variant="outline-success">在職</Button></td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>Tom</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="success">在職</Button></td>
+                            <td><Button variant="outline-success">在職</Button></td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>Amber</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="success">在職</Button></td>
+                            <td><Button variant="outline-success">在職</Button></td>
                         </tr>
                     </tbody>
                 </Table>
-        </div>
+                <Button variant="primary"><Link to="/addworker"style={
+                {color:"white",
+                textDecoration:"none",
+                fontFamily:"微軟正黑體"}}>新增員工</Link></Button>
+                <Button variant="danger" style={{marginLeft:"20px"}}>刪除員工</Button>                
+            </div>
     );
 }
 function event1(){
@@ -136,6 +144,7 @@ function event1(){
 function Schedule(){
     return(
         <div className="content">
+            <h2><b>2019/12/26-29班表</b></h2>
             <Table striped bordered hover style={{maxWidth:"60vw"}}>
                 <thead>
                     <tr>
@@ -207,8 +216,7 @@ function Schedule(){
         </div>
     );
 }
-function ChoosenSchedule ()
-{
+function ChoosenSchedule (){
     return(
         <div className="content">
             <Table bordered style={{maxWidth:"60vw"}}>
@@ -243,8 +251,30 @@ function ChoosenSchedule ()
 function Salary () {
     return(
         <div className="content">
+            <h2>2019/12/26-29薪資計算結果:</h2>
             <h3>時薪:150</h3>
+            <h3>目前累計小時數:30hr</h3>
             <h3>目前累計薪資:4500</h3>
+        </div>
+    );
+}
+function AddWorker(){
+    return(
+        <div className="content" style={{maxWidth:"50vw"}}>
+            <Form>
+                <Form.Group controlID="WorkerInfo">
+                    <Form.Label>員工編號</Form.Label>
+                    <Form.Control placeholder="輸入編號" ></Form.Control>
+                    <Form.Label>員工姓名</Form.Label>
+                    <Form.Control placeholder="輸入姓名"></Form.Control>
+                    <Form.Label>員工信箱</Form.Label>
+                    <Form.Control type="email" placeholder="輸入信箱"></Form.Control>
+                    <Form.Label>員工電話號碼</Form.Label>
+                    <Form.Control placeholder="輸入電話號碼"></Form.Control>
+                </Form.Group>
+                <Button variant="primary">新增</Button>
+                <Button variant="secondary" style={{marginLeft:"20px"}}>取消</Button>
+            </Form>
         </div>
     );
 }

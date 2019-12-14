@@ -22,7 +22,7 @@ function ModifyFrame(){
                     "maxWidth": "100vw",
             }}>
                 <Row>
-                    <Col className="item" ><b><label onClick = {event1} >個人資訊</label></b></Col>
+                    <Col className="item"><b><label onClick = {event1} >個人資訊</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >我的時段</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >檢視我的班表</label></b></Col>
                     <Col className="item"><b><label onClick = {event1} >薪資紀錄</label></b></Col>
@@ -49,6 +49,7 @@ function ModifyFrame(){
                         <InputGroup className="mt-2 mb-2">
                             <FormControl
                             placeholder="請輸入新密碼"
+                            type="password"
                             />
                         </InputGroup>
                     </Col>
@@ -58,6 +59,7 @@ function ModifyFrame(){
                         <InputGroup className="mt-2 mb-2">
                             <FormControl
                             placeholder="確認密碼"
+                            type="password"
                             />
                         </InputGroup>
                     </Col>

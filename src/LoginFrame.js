@@ -12,6 +12,7 @@ import {
 function LoginFrame()
 {
     return(     
+        
         <div style={{"fontFamily":"微軟正黑體"}}>
             <div className="title">
                 <h1>-NCU-<br></br>工時管理系統</h1>
@@ -44,7 +45,7 @@ function LoginFrame()
                     <Row >
                         <Col></Col>
                         <Col>
-                            <Button variant="primary">登入</Button>
+                            <Button variant="success">登入</Button>
                         </Col>
                         <Col>
                             <Button variant="secondary">忘記密碼?</Button>
