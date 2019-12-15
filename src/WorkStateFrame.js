@@ -9,7 +9,8 @@ import {
     InputGroup,
     FormControl,
     Form,
-    FormCheck
+    FormCheck,
+    Alert
 } from 'react-bootstrap';
 import {
     BrowserRouter as Router,
@@ -19,7 +20,7 @@ import {
     NavLink,
     useRouteMatch
 }from 'react-router-dom';
-export default function WorkStateFrame(){
+export default function WorkStateFrame(){//左側選單列表
     return(
         <Router>
             <div>
@@ -27,7 +28,7 @@ export default function WorkStateFrame(){
                     <center>
                     <b> 
                         <h1 className="mt-3" style={{
-                            "color":"yellow"}}>&lt;&lt;NCU&gt;&gt;<br></br></h1>
+                            "color":"#ffd633"}}>&lt;&lt;NCU&gt;&gt;<br></br></h1>
                         <h1>工時管理系統</h1>
                         <h3>計時人員</h3>
                     </b>
@@ -43,7 +44,7 @@ export default function WorkStateFrame(){
                             label="選擇班表"></MenuLink>
                         </li>
                         <li><MenuLink 
-                            to="/choosenSchedule"
+                            to="/MySchedule"
                             label="我的時段"></MenuLink></li>
                         <li><MenuLink 
                             to="/salary"
@@ -55,8 +56,8 @@ export default function WorkStateFrame(){
                 <Route exact path="/">
                     <WorkerInfo/>
                 </Route>
-                <Route path="/choosenSchedule">
-                    <ChoosenSchedule/>
+                <Route path="/MySchedule">
+                    <MySchedule/>
                 </Route>
                 <Route path="/schedule">
                     <Schedule/>
@@ -72,7 +73,7 @@ export default function WorkStateFrame(){
     );
 }
 
-function MenuLink ({activeOnlyWhenExact,to,label}){
+function MenuLink ({activeOnlyWhenExact,to,label}){//客製化Menu link
     let match = useRouteMatch ({
         exact:activeOnlyWhenExact,
         path:to
@@ -90,58 +91,63 @@ function MenuLink ({activeOnlyWhenExact,to,label}){
     );
 }
 
-function WorkerInfo(){
+function WorkerInfo(){//員工資訊
     return(
         <div className="content">
             <h1><b>員工資訊</b></h1>
-                <Table responsive style={{maxWidth:"40vw"}}>
+                <Table responsive style={{maxWidth:"60vw"}} id="workerTable">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>員工姓名</th>
+                            <th>電話號碼</th>
+                            <th>郵件信箱</th>   
                             <th>修改</th>
                             <th>在職狀態</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody >
+                        <tr className="cc">
                             <td>1</td>
                             <td>Albert</td>
+                            <td>0928235674</td>
+                            <td>albert@gmail.com</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="outline-danger">離職</Button></td>
+                            <td><Alert variant="danger" className="fired">解雇</Alert></td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td>Eric</td>
+                            <td>0928257470</td>
+                            <td>Eric@gmail.com</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="outline-success">在職</Button></td>
+                            <td><Alert variant="success" className="employed">在職</Alert></td>
                         </tr>
                         <tr>
                             <td>3</td>
                             <td>Tom</td>
+                            <td>092825677</td>
+                            <td>Tom@gmail.com</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="outline-success">在職</Button></td>
+                            <td><Alert variant="success" className="employed">在職</Alert></td>
                         </tr>
                         <tr>
                             <td>4</td>
                             <td>Amber</td>
+                            <td>0928291737</td>
+                            <td>Amber@gmail.com</td>
                             <td><Button variant="secondary">修改</Button></td>
-                            <td><Button variant="outline-success">在職</Button></td>
+                            <td><Alert variant="success" className="employed">在職</Alert></td>
                         </tr>
                     </tbody>
                 </Table>
-                <Button variant="primary"><Link to="/addworker"style={
-                {color:"white",
-                textDecoration:"none",
-                fontFamily:"微軟正黑體"}}>新增員工</Link></Button>
+                <Link to="/addworker"><Button variant="primary">新增員工</Button></Link>
                 <Button variant="danger" style={{marginLeft:"20px"}}>刪除員工</Button>                
             </div>
     );
 }
-function event1(){
-    alert("輸入有誤");
-}
-function Schedule(){
+
+function Schedule(){//選擇班表
     return(
         <div className="content">
             <h2><b>2019/12/26-29班表</b></h2>
@@ -216,7 +222,7 @@ function Schedule(){
         </div>
     );
 }
-function ChoosenSchedule (){
+function MySchedule (){//我的時段
     return(
         <div className="content">
             <Table bordered style={{maxWidth:"60vw"}}>
@@ -248,7 +254,7 @@ function ChoosenSchedule (){
         </div>
     );
 }
-function Salary () {
+function Salary () {//薪資紀錄
     return(
         <div className="content">
             <h2>2019/12/26-29薪資計算結果:</h2>
@@ -258,22 +264,23 @@ function Salary () {
         </div>
     );
 }
-function AddWorker(){
+function AddWorker(){//新增員工
     return(
         <div className="content" style={{maxWidth:"50vw"}}>
             <Form>
                 <Form.Group controlID="WorkerInfo">
                     <Form.Label>員工編號</Form.Label>
-                    <Form.Control placeholder="輸入編號" ></Form.Control>
-                    <Form.Label>員工姓名</Form.Label>
+                    <Form.Control placeholder="輸入編號"></Form.Control>
+                    <Form.Label className="mt-2">員工姓名</Form.Label>
                     <Form.Control placeholder="輸入姓名"></Form.Control>
-                    <Form.Label>員工信箱</Form.Label>
+                    <Form.Label className="mt-2">員工電話號碼</Form.Label>
                     <Form.Control type="email" placeholder="輸入信箱"></Form.Control>
-                    <Form.Label>員工電話號碼</Form.Label>
+                    <Form.Label className="mt-2">員工信箱</Form.Label>
                     <Form.Control placeholder="輸入電話號碼"></Form.Control>
                 </Form.Group>
                 <Button variant="primary">新增</Button>
-                <Button variant="secondary" style={{marginLeft:"20px"}}>取消</Button>
+                <Link to="/"><Button variant="secondary" style={{marginLeft:"20px"}}>
+                    取消</Button></Link>
             </Form>
         </div>
     );

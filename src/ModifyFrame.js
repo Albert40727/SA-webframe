@@ -40,6 +40,7 @@ function ModifyFrame(){
                         <InputGroup className="mt-2 mb-2">
                             <FormControl
                             placeholder="請輸入舊密碼"
+                            type="password"
                             />
                         </InputGroup>
                     </Col>
